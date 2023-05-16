@@ -27,7 +27,10 @@ https://github.com/Swoorup/mysh
 
 4th day
 
+https://github.com/madebypixel02/minishell
 
+Executor step
+https://user-images.githubusercontent.com/71781441/144017004-aa68e8d7-5da7-4ece-afc6-b8ab100113df.jpg
 
 
 

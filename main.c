@@ -47,14 +47,14 @@ void    setting_signal()
 }
 
 //int main(int argc, char **argv, char **envp)
-int main(int ac, char **av)
+int main()
 {
     char *str;
 	struct termios term;
 
-
+    
     tcgetattr(STDIN_FILENO, &term);//get the parameters and store them in the termios structure
-    if (ac != 1)
+    //if (ac != 1)
         //error msg int	ft_error(char *str, t_data *data)
 
     term.c_lflag = term.c_lflag & ~(ECHOCTL);//disable the ECHOCTL(echo control) flag

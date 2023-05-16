@@ -8,7 +8,8 @@ https://youtube.com/playlist?list=PLxIRFba3rzLzxxZMMbrm_-mkI7mV9G0pj
 1_process ID
 2_parent process ID
 3_Fork
-
+ Go this
+ 
 
 Second day
 

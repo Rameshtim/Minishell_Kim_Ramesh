@@ -35,6 +35,12 @@ https://user-images.githubusercontent.com/71781441/144017004-aa68e8d7-5da7-4ece-
 
 
 
+5th day
+
+lexer from YY
+https://github.com/mars12161/minishell/blob/main/minishell_lexer.png
+
+
 Now you have to look this....
 
 

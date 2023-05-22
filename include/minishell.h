@@ -13,7 +13,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdlib.h>//free, malloc
 # include <unistd.h>//read, write
 # include <stdio.h>//printf
@@ -24,7 +24,7 @@
 # include <string.h>//
 # include <stdbool.h>//
 
-# define ARGUMENT_INPUT_ERROR "ARGUMENT INPUT ERROR"
+//# define ARGUMENT_INPUT_ERROR "ARGUMENT INPUT ERROR"
 
 /* typedef enum s_tokens
 {

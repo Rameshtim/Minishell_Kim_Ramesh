@@ -19,7 +19,7 @@
 //cc -Wall -Wextra -Werror main.c -lreadline 
 //; ./a.out
 
-# include "minishell.h"
+# include "include/minishell.h"
 
 void    sig_handler(int signum)
 {

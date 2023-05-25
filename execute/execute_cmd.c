@@ -6,7 +6,7 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:38:08 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/05/24 17:12:23 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:19:15 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,12 @@ int	execute_cmd(t_cmd *cmd, char ***env, int fd[2])
 		}
 		check_fd_execve(cmd, fd);
 		cm = find_command(cmd->args[0], env);
+		if (cm)
+			execve(cm, cmd->args, env);
 	}
+	if (cmd->fd.in != 0)
+		close(cmd->fd.in);
+	if (cmd->fd.out != 1)
+		close(cmd->fd.out);
+	return (pid);
 }

@@ -6,7 +6,7 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:18:38 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/05/24 15:34:52 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:29:39 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ int check_builtins(char *cmd)
 	return (0);
 }
 
+void	check_last_pid(int pid, int count, int cmd_count)
+{
+	int		status;
+
+	status = 0;
+	if (count == cmd_count)
+	{
+		waitpid(pid, &status, 0);
+		if (!g_data.which)
+			g_data.exit_status = WEXITSTATUS(status);
+	}
+}
+
 int	exec_builtins_execve(t_ast_node *ptr, char ***env, t_elem *head, int *fd)
 {
 	pid_t	pid;
@@ -38,6 +51,9 @@ int	exec_builtins_execve(t_ast_node *ptr, char ***env, t_elem *head, int *fd)
 	pid = 0;
 	if (check_builtins(ptr->content->cmd->args[0]) == 1)
 		execute_builtins(ptr->content->cmd, env, head);
+	else
+		pid = execute_cmd(ptr->content->cmd, *env, fd);
+	return (pid);
 }
 
 void	execute(t_ast_node *ptr, char ***env, int cmd_count, t_elem *head)
@@ -52,4 +68,19 @@ void	execute(t_ast_node *ptr, char ***env, int cmd_count, t_elem *head)
 		pid = exec_builtins_execve(ptr, env, head, fd);
 		count++;
 	}
+	else if (ptr->type == PIPE)
+	{
+		if (pipe(fd) < 0)
+			return ;
+		if (ptr->content->pipe->right->type == CMD)
+			dup_fd(&ptr->content->pipe->right->content->cmd->fd.out, fd[1]);
+		else if (ptr->content->pipe->right->type == PIPE)
+			dup_fd(find_right_left(ptr), fd[1]);
+		dup_fd (&ptr->content->pipe->left->content->cmd->fd.in, fd[0]);
+		execute(ptr->content->pipe->right, env, cmd_count, head);
+		execute(ptr->content->pipe->left, env, cmd_count, head);
+		close(fd[0]);
+		close(fd[1]);
+	}
+	check_last_pid(pid, count, cmd_count);
 }

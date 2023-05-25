@@ -6,11 +6,21 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:27:47 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/05/24 16:13:22 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:57:13 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
 
 char	*ft_strndup(char *s1, int n)
 {

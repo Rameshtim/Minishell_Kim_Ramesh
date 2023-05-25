@@ -6,7 +6,7 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:08:39 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/05/24 16:50:24 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:28:29 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 #include <errno.h>
 #include <dirent.h>
 #include <signal.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 typedef enum e_bool
 {
@@ -196,5 +198,17 @@ int check_builtins(char *cmd);
 int	exec_builtins_execve(t_ast_node *ptr, char ***env, t_elem *head, int *fd);
 void	execute(t_ast_node *ptr, char ***env, int cmd_count, t_elem *head);
 void	execute_builtins(t_cmd *cmd, char ***env, t_elem *head);
+int	ft_strcmp(char *s1, char *s2);
+char	*search_env_var(char *key, char **env);
+char	*find_slash_dot(char *cmd, char **env);
+char	*find_path(char *cmd, char **env);
+char	*find_command(char *cmd, char **env);
+int	*find_right_left(t_ast_node *ptr);
+
+void	dup_fd(int *old, int new);
+void	check_fd_builtins(t_cmd *cmd);
+void check_fd_execve(t_cmd *cmd, int fd[2]);
+int	execute_cmd(t_cmd *cmd, char ***env, int fd[2]);
+
 
 #endif

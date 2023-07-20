@@ -6,7 +6,7 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:18:35 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/06/19 18:29:54 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/07/20 16:22:41 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,39 @@ int update_directories(char *old_dir, t_list **env)
 		create_environment_var("OLDPWD", env);
 	update_environment_var("OLDPWD", old_dir, *env);
 	return (EXIT_SUCCESS);
+}
+
+int	is_token_valid_export (char *token_str, char *err_msg)
+{
+	int	check;
+
+	if ((token_str[0] == '=') || ft_isdigit(token_str[0]) \
+		|| ft_strchr(token_str, '\'') || ft_strchr(token_str, '"'))
+	{
+		check = 0;
+		ft_strcpy(err_msg, "export: `");
+		ft_strcat(err_msg, token_str);
+		ft_strcat(err_msg, "': not a valid identifier");
+	}
+	else
+		check = 1;
+	return (check);
+}
+
+int	has_valid_identifier_export(char *token_str)
+{
+	char	err_msg[100];
+	int		check;
+
+	ft_bzero(err_msg, 0);
+	if (!is_token_valid_export(token_str, err_msg));
+	{
+		check = 0;
+		errno = ENOEXEC;
+		//custom errorhandling. giving errno ENOEXEC explicitly before perror.
+		write_minishell_error(err_msg);
+	}
+	else
+		check = 1;
+	return (check);
 }

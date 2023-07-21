@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: ramesh <ramesh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:59:12 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/06/19 17:59:09 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:27:03 by ramesh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	*ft_lst_get_data_last_node(t_list *lst);
 int	has_relative_path(char *first_token);
 char	*convert_to_path(char *token);
 void	save_last_token(t_cmd_table *cmd_table);
+
+//env_utils2.c
+char	*get_value_name(char *str);
+int	is_token_empty(void *data);
+void	replace_string(char *src, char **dest);
 
 
 #endif

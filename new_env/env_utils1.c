@@ -29,3 +29,20 @@ int	is_env_var(char *potential_var, t_list *env)
 	}
 	return (0);
 }
+
+char	*get_var_name(char *str)
+{
+	int	i;
+	char	*var;
+
+	i = 0;
+	if (str[i] == '$')
+		i++;
+	while (str[i] && !is_token_delimiter(str[i]) && str[i] != '$' && str[i] != '=' \
+		!is_quote(str[i]) && str[i] != '/')
+		i++;
+	var = ft_substr(str, 0, i);
+	if (!var)
+		quit_program(EXIT_FAILURE);
+	return (var);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: ramesh <ramesh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:37:20 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/06/29 16:46:54 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:32:34 by ramesh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ void	print_all_exported_vars (t_list *env)
 	ft_lstclear(&sorted_env, ft_lstdel_int);
 }
 
+void	update_env_var_with_token(char *token_str, char *var, t_list *env)
+{
+	char	*value;
+
+	value = get_value_name(token_str);
+	update_environment_var(var, value, env);
+	free (value);
+}
+
 int	ft_export(t_list *tokens, t_list **env)
 {
 	char	*var;
@@ -76,5 +85,19 @@ int	ft_export(t_list *tokens, t_list **env)
 		token_str = tokens->content;
 		if (!has_valid_identifier_export(token_str))
 			return (EXIT_FAILURE);
+		if (has_only_one_cmd())
+		{
+			var = get_var_name(token_str);
+			if (is_env_var(var, *env))
+			{
+				if (ft_strchr(token_str, '='))
+					update_env_var_with_token(token_str, var, *env);
+			}
+			else
+				create_environment_var(token_str, env);
+			free(var);
+		}
+		tokens = tokens->next;
 	}
+	return (EXIT_SUCCESS);
 }

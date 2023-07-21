@@ -148,10 +148,19 @@ void	write_minishell_exec_arg_error_nocolon(char *exec_name, char *arg, char *er
 int	cd_error_message(char *builtin, char *error);
 
 //builtin_utils1.c
-int	has_only_one_cmd(void);
-int update_directories(char *old_dir, t_list **env);
 char	*replace_env_value(char **env_ptr, char *var_name, char *new_value);
+void	update_environment_var(char *var, char *new_value, t_list *env);
 int update_directories(char *old_dir, t_list **env);
+int	is_token_valid_export (char *token_str, char *err_msg);
+int	has_valid_identifier_export(char *token_str);
+
+
+//builtin_utils2.c
+int	has_only_one_cmd(void);
+int	is_token_valid_unset(char *token_str, char *err_msg);
+int	has_valid_identifier_unset(char *token_str);
+void	ft_lstdel_node_nbr(t_list **lst, int node_nbr, void (*del)(void*));
+ft_lstdel_middle(t_list **lst, int node_nbr, void (*del)(void*));
 
 //ft_cd.c
 int	only_cd_errors(t_list *tokens);
@@ -167,9 +176,21 @@ int	cd_env_error_check(char *env);
 
 //ft_export.c
 void	create_environment_var(char *token_str, t_list **env);
+t_list *get_sorted_env(t_list *env);
+void	print_all_exported_vars (t_list *env);
+void	update_env_var_with_token(char *token_str, char *var, t_list *env);
+int	ft_export(t_list *tokens, t_list **env);
 
 //ft_echo.c
 int		has_repeated_char_in_str(char repeat_chr, char *str, unsigned int start);
 int	ft_echo(t_list *tokens);
+
+
+//ft_pwd.c
+int	ft_pwd(void);
+
+//ft_unset.h
+
+
 
 #endif

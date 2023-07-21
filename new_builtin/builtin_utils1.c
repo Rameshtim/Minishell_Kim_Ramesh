@@ -3,26 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: ramesh <ramesh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:18:35 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/20 16:39:51 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/07/21 13:16:57 by ramesh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 #include "../minishell1.h"
-
-int	has_only_one_cmd(void)
-{
-	int	check;
-
-	if (ft_lstsize(g_msh.curr_cmd_table->cmds) == 1)
-		check = 1;
-	else
-		check = 0;
-	return (check);
-}
 
 char	*replace_env_value(char **env_ptr, char *var_name, char *new_value)
 {

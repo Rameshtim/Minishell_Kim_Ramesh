@@ -38,5 +38,7 @@
 #include "new_env/environment.h"
 #include "quit_free/quit_free.h"
 #include "parse/parse.h"
+#include "quit_programm/free_memory.h"
+#include "get_input/termcaps.h"
 
 #endif

@@ -24,6 +24,8 @@ char	*ft_strcat(char *dest, char *src);
 int is_quote(char c);
 void	ft_lstdel_first(t_list **lst, void (*del)(void*));
 void	ft_lstdel_last(t_list *lst, void (*del)(void*));
+void	ft_dlstclear(t_dlist **lst, void (*del)(void*));
+void	ft_dlstdelone(t_dlist *lst, void (*del)(void*));
 
 
 #endif

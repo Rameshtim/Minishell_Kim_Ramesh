@@ -40,5 +40,7 @@
 #include "parse/parse.h"
 #include "quit_programm/free_memory.h"
 #include "get_input/termcaps.h"
+#include "new_execute/execute.h"
+#include "libft_utils/libft_utils.h"
 
 #endif

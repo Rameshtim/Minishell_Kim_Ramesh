@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_memory.h                                      :+:      :+:    :+:   */
+/*   env3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 16:08:35 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/21 16:08:35 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/07/23 11:12:49 by rtimsina          #+#    #+#             */
+/*   Updated: 2023/07/23 11:12:49 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FREE_MEMORY_H
-# define FREE_MEMORY_H
+#include "environment.h"
 
-#include "../minishell1.h"
+t_list	*get_split_token(char *token)
+{
+	t_list		*split_token;
+	t_list		*new_node;
+	char		*token_piece;
+	int			curr_pos;
+	int			saved_pos;
 
-void	free_msh(t_msh *msh);
-void	free_ast(t_ast *ast);
-void	free_cmd_table(void *cmd_table);
-void	free_cmd(void *cmd);
-void	free_redir(void *redir);
-void	quit_program(int exit_code);
-
-
-#endif
+	split_token = 0;
+	curr_pos = 0;
+	saved_pos = 0;
+	while (token[curr_pos])
+	{
+		saved_pos = curr_pos;
+		if (is_quote(token[curr_pos]))
+			skip_string_with_quotes((const char *)token, &curr_pos);
+	}
+}

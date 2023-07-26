@@ -19,10 +19,25 @@
 
 //env_utils1.c
 int	is_env_var(char *potential_var, t_list *env);
+char	*get_var_name(char *str);
+int	ft_strnstr_iterator(char *haystack, char *needle, size_t len);
+char	*replace_midstring(char *original, char *old_substr, char *new_substr, int replace_i);
+void	tilde_join(char **str, char **home_path);
 
 
 //env2.c
 char	*ft_getenv(char *key);
+void	duplicate_env(t_list **dup_envp, char **envp);
+void	remove_env_value(char *key);
+void	replace_status_env(char **str, int last_status);
+int	is_path_executable(cahr *exec_file);
+
+//env3.c
+t_list	*get_split_token(char *token);
+int	get_new_token_size(t_list *split_token);
+char	*join_split_token(t_list *split_token);
+void	replace_one_var(char **str);
+
 
 
 //get_absolute_path.c

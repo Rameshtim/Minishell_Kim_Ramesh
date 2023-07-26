@@ -22,6 +22,7 @@ void	ft_lstdel_int(void *data);
 char	*ft_strcpy(char	*dest, const char *src);
 char	*ft_strcat(char *dest, char *src);
 int is_quote(char c);
+int	ft_isspace(char c);
 void	ft_lstdel_first(t_list **lst, void (*del)(void*));
 void	ft_lstdel_last(t_list *lst, void (*del)(void*));
 void	ft_dlstclear(t_dlist **lst, void (*del)(void*));

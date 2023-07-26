@@ -26,4 +26,8 @@ void	set_redirs_pipes(t_list *redirs, t_cmd_table *cmd_table, int process_index)
 void	exec_cmd_table(t_cmd_table *cmd_table);
 void	exec_ast(t_ast *ast);
 
+//execute_utils.h
+int	has_absolute_path(char *first_token);
+
+
 #endif

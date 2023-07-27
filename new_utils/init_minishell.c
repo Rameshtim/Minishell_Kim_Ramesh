@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   termcaps.h                                         :+:      :+:    :+:   */
+/*   init_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 16:31:19 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/27 12:39:52 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/07/27 11:45:28 by rtimsina          #+#    #+#             */
+/*   Updated: 2023/07/27 12:16:31 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TERMCAPS_H
-#define TERMCAPS_H
+#include "utils.h"
 
-# include "../minishell1.h"
-
-//termcaps.c
-void	turn_on_canonical_mode(t_termcaps *termcaps);
-void	turn_off_canonical_mode(t_termcaps *termcaps);
-int	ft_putint(int c);
-void	init_termcaps(t_termcaps *termcaps);
-int	has_capabilities(t_termcaps *termcaps);
-
-#endif
+void	init_minishell(t_msh *msh, char **envp)
+{
+	if (!isatty(STDIN_FILENO))
+		quit_program(EXIT_FAILURE);
+	//Make sure terminal is linked to STDIN
+	ft_bzero(msh, sizeof(t_msh));
+	duplicate_env(&msh->dup_envp, envp);
+	unset_oldpwd();
+	increment_shlvl();
+	init_termcaps(&msh->termcaps);
+	signal(SIGINT, catch_sigint);
+	signal(SIGQUIT, catch_sigquit);
+}

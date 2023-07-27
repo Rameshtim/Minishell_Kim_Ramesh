@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell1.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramesh <ramesh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:40:02 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/21 12:03:59 by ramesh           ###   ########.fr       */
+/*   Updated: 2023/07/27 10:37:29 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@
 #include "get_input/termcaps.h"
 #include "new_execute/execute.h"
 #include "libft_utils/libft_utils.h"
+# include "new_utils/utils.h"
 
 #endif

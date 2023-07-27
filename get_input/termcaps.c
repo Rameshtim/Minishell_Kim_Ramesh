@@ -6,7 +6,7 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:33:46 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/21 16:33:46 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/07/27 12:38:44 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,50 @@ void	turn_off_canonical_mode(t_termcaps *termcaps)
 int	ft_putint(int c)
 {
 	return (write(1, &c, 1));
+}
+
+void	init_termcaps(t_termcaps *termcaps)
+{
+	//initiate termcaps setting to use terminal capabilities.
+	char	*term_type;
+
+	//get terminal setting
+	if (tcgetattr(STDIN_FILENO, &termcaps->old_term) == -1)
+		quit_program(EXIT_FAILURE);
+	term_type = ft_getenv("TERM");
+	if (!term_type)
+		quit_program(EXIT_FAILURE);
+	if (tgetent(termcaps->buffer, term_type) <= 0)
+		quit_program(EXIT_FAILURE);
+	else if (!has_capabilities(termcaps))
+		quit_program(EXIT_FAILURE);
+	free(term_type);
+}
+
+int	has_capabilities(t_termcaps *termcaps)
+{
+	int	check;
+	
+	termcaps->keys_on = tgetstr("ks", &termcaps->buffer);
+	//"ks-keystart" enables the terminal to return ANSI code when special keys 
+	//are pressed like up_arrow
+	if (termcaps->keys_on)
+		tputs(termcaps->keys_on, 1, ft_putint);
+	termcaps->keys_off = tgetstr("ke", &termcaps->buffer);
+	//if "ks" is used "ke-keyend" must be used at the end of the programm.
+	termcaps->up_arrow = tgetstr("ku", &termcaps->buffer);
+	//Function keys aren't like common capabilities.To use tputs is not needed.
+	//we compare the values read by the buffer when pressing to up arrow
+	//to the return value of "ku-keys up"
+	termcaps->down_arrow = tgetstr("kd", &termcaps->buffer);
+	termcaps->backspace = tgetstr("kb", &termcaps->buffer);
+	termcaps->del_line = tgetstr("dl", &termcaps->buffer);
+	termcaps->set_cursor_begin = tgetstr("cr", &termcaps->buffer);
+	if (!termcaps->keys_off || termcaps->keys_on || termcaps->up_arrow \
+		|| termcaps->down_arrow || termcaps->backspace || \
+		termcaps->del_line || termcaps->set_cursor_begin)
+		check = 0;
+	else
+		check = 1;
+	return (check);
 }

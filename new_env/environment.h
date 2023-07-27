@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramesh <ramesh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:59:12 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/21 12:27:03 by ramesh           ###   ########.fr       */
+/*   Updated: 2023/07/27 12:09:40 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	save_last_token(t_cmd_table *cmd_table);
 char	*get_value_name(char *str);
 int	is_token_empty(void *data);
 void	replace_string(char *src, char **dest);
+void	unset_oldpwd(void);
+void	increment_shlvl(void);
 
 
 #endif

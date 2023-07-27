@@ -139,14 +139,6 @@ typedef struct s_msh
 
 extern t_msh g_msh;
 
-//errors.h
-void	write_minishell_error(char *err_msg);
-void	write_exec_error(char *exec_name, char *err_msg);
-void	write_minishell_exec_error(char *exec_name, char *err_msg);
-void	write_minishell_exec_arg_error(char *exec_name, char *arg, char *err_msg);
-void	write_minishell_exec_arg_error_nocolon(char *exec_name, char *arg, char *err_msg);
-int	cd_error_message(char *builtin, char *error);
-
 //builtin_utils1.c
 char	*replace_env_value(char **env_ptr, char *var_name, char *new_value);
 void	update_environment_var(char *var, char *new_value, t_list *env);

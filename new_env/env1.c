@@ -14,6 +14,8 @@
 
 void	replace_tilde_with_home(char **token)
 {
+	//tilde character gets replaced if its a first character.
+	//only character in token or followed by forward slash.
 	char	*home_path;
 
 	home_path = ft_getenv("HOME");

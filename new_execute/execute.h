@@ -27,7 +27,10 @@ void	exec_cmd_table(t_cmd_table *cmd_table);
 void	exec_ast(t_ast *ast);
 
 //execute_utils.h
+int	is_builtin(t_list *tokens);
 int	has_absolute_path(char *first_token);
+int	has_relative_path(char *first_token);
+char	**convert_list_to_arr(t_list *lst);
 
 
 #endif

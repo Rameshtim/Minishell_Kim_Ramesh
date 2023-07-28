@@ -30,6 +30,8 @@ void	replace_tilde_with_home(char **token)
 
 char	*get_last_exec_name(char *underscore)
 {
+	//in case the file refers to an executable from the path files it will be 
+	//replaced by their file names.
 	char	*value;
 	char	*tmp;
 

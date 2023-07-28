@@ -12,9 +12,13 @@
 
 #include "builtin.h"
 
-int	ft_exit(void)
+int	ft_exit(t_list *args)
 {
-	ft_putstr_fd("exit\n", STDERR_FILENO);
-	quit_program(g_msh.exit_status);
-	return (EXIT_SUCCESS);
+	if (has_only_one_cmd())
+		ft_putstr_fd("exit\n", STDERR_FILENO);
+	if (args == 0 && has_only_one_cmd())
+		quit_program(g_msh.exit_status);
+	else if (args == 0 && !has_only_one_cmd())
+		return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

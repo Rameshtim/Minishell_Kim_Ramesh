@@ -181,8 +181,16 @@ int	ft_echo(t_list *tokens);
 //ft_pwd.c
 int	ft_pwd(void);
 
-//ft_unset.h
+//ft_exit.c
+int	ft_exit(t_list *args);
 
+//ft_unset.h
+void	ft_delete_list_str(void *data);
+void	delete_env_var(char *var, t_list **env);
+int	ft_unset(t_list *tokens, t_list **env);
+
+//ft_env.c
+int	ft_env(t_list *env);
 
 
 #endif

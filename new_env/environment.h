@@ -25,6 +25,13 @@ char	*replace_midstring(char *original, char *old_substr, char *new_substr, int 
 void	tilde_join(char **str, char **home_path);
 
 
+//env1.c
+void	replace_tilde_with_home(char **token);
+char	*get_last_exec_name(char *underscore);
+void	replace_vars_with_values(cahr **str);
+void	replace_env_single_token(char **token);
+void	replace_envs(t_list **tokens, t_list *redirs);
+
 //env2.c
 char	*ft_getenv(char *key);
 void	duplicate_env(t_list **dup_envp, char **envp);

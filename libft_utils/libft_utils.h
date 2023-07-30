@@ -28,6 +28,7 @@ void	ft_lstdel_last(t_list *lst, void (*del)(void*));
 void	ft_dlstclear(t_dlist **lst, void (*del)(void*));
 void	ft_dlstdelone(t_dlist *lst, void (*del)(void*));
 void ft_lstclear_if(t_list **lst, int (*cmp)(void *), void (*del)(void *));
+int	ft_strisspace(char *str);
 
 
 #endif

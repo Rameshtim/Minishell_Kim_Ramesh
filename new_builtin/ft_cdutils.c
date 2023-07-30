@@ -80,3 +80,21 @@ int	cd_env_error_check(char *env)
 	}
 	return (status);
 }
+
+int	cd_path_error_check(char *path)
+{
+	DIR	*dirp;
+	int	status;
+
+	if (!has_x_permission(path))
+		return (EXIT_FAILURE);
+	dirp = opendir(path);
+	if (dirp == NULL)
+		status = other_invalid_error("cd", errno, path);
+	else
+	{
+		status = EXIT_SUCCESS;
+		closedir(dirp);
+	}
+	return (status);
+}

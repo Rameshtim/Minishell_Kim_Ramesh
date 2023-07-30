@@ -33,4 +33,19 @@ int	has_history(t_dlist *input_history, t_termcaps *termcaps, char *buf);
 void	parse_input_history(t_dlist **input_history, t_termcaps *termcaps, char *buf, int *i);
 void	delete_single_char(t_termcaps *termcaps, char *buf, int *i);
 char	*get_input(t_dlist *input_history, t_termcaps *termcaps);
+
+//input_validation2.c
+int	has_char_at_end(const char *input, char c, char *err_msg);
+int	has_forbidden_sequence(const char *input, char *test, char *err_msg);
+int	has_spaces_between_char(const char *input, char c, char *err_msg);
+int	has_non_supported(const char *input, char *test, char *err_msg);
+int	has_non_supported_one(const char *input, char *test, char *err_msg);
+
+//input_validation1.c
+int	has_quotes_open(const char *input, char *err_msg);
+int	has_char_at_beginning(const char *input, char c, char *err_msg);
+int	is_input_valid_not_supported(const char *input, char *err_msg);
+int	is_input_valid_unexpected_token(chonst char *input, char *err_msg);
+int	is_input_valid(const char *input);
+
 #endif

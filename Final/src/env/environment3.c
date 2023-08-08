@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   environment3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/16 22:01:55 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 16:58:43 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 09:59:26 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 09:59:27 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "environment.h"
-
-/*
-** Splits a single token into several different fields. For example, the token:
-** "$TERM"'$PATH'hello1"hel'lo2"'hel"lo3'
-** would be split in 5 nodes. Each node keeps its original quotes
-** "$TERM"
-** '$PATH'
-** hello1
-** "hel'lo2"
-** 'hel"lo3'
-** @param:	- [char *] token to split
-** @return:	[t_list *] linked list with all pieces of token
-** Line-by-line comments:
-** @12		Save beginning of token piece
-** @13-16	Parse until end of token piece
-** @17-23	Extract string, create a new node and add to back of existing ones
-*/
 
 t_list	*get_split_token(char *token, t_msh *g_msh)
 {
@@ -58,15 +41,6 @@ t_list	*get_split_token(char *token, t_msh *g_msh)
 	return (split_token);
 }
 
-/*
-** Joins all strings of a linked lists into a BIG string
-** @param:	- [t_list *] split token to join
-** @return:	[char *] new string result of all the pieces of token
-** Line-by-line comments:
-** @4		Gets the cumulated size of the linked list
-** @8-12	Parse split tokens and concat them all
-*/
-
 char	*join_split_token(t_list *split_token, t_msh *g_msh)
 {
 	char	*token;
@@ -85,12 +59,6 @@ char	*join_split_token(t_list *split_token, t_msh *g_msh)
 	return (token);
 }
 
-/*
-** Gets cumulated size of the linked list
-** @param:	- [t_list *] split token to join
-** @return:	[int] sum of the size of all strings in the linked list
-*/
-
 int	get_new_token_size(t_list *split_token)
 {
 	int		size;
@@ -105,14 +73,6 @@ int	get_new_token_size(t_list *split_token)
 	}
 	return (size);
 }
-
-/*
-** Replaces an environment variable when only $ENV. We need to have an edge case
-** for this because when $ENV is used without quotes spaces are not to be
-** printed (I know, I know, one more edge case. Fear not, it won't be the
-** last...)
-** @param:	- [char **] token to replace
-*/
 
 void	replace_one_var(char **str, t_msh *g_msh)
 {

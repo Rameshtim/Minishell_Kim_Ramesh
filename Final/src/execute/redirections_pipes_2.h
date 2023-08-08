@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   redirections_pipes.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 10:18:25 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:18:26 by hongbaki         ###   ########.fr       */
+/*   Created: 2021/05/10 16:04:57 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/05/18 09:44:07 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef REDIRECTIONS_PIPES_2_H
+# define REDIRECTIONS_PIPES_2_H
 
-int	is_quote(char c)
-{
-	int	check;
+# include "main.h"
 
-	if (c == '"' || c == '\'')
-		check = 1;
-	else
-		check = 0;
-	return (check);
-}
+int	open_heredoc_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, t_msh *g_msh);
+void read_heredoc_file(t_redir *redir, t_msh *g_msh);
+
+#endif

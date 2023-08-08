@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 14:47:10 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/08 13:30:15 by rtimsina         ###   ########.fr       */
+/*   Updated: 2021/05/25 10:21:36 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-# include "main.h"
-//# include "libft_utils/libft_utils.h"
 
 /*
 ** An Abstract Syntax Tree (aka AST) that gathers one or more command tables.

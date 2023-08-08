@@ -17,7 +17,8 @@
 
 int		ft_export(t_list *tokens, t_list **env, t_msh *g_msh);
 void	print_all_exported_vars(t_list *env, t_msh *g_msh);
-void	update_env_var_with_token(char *token_str, char *var, t_list *env, t_msh *g_msh);
+void	update_env_var_with_token(char *token_str, char *var, 
+t_list *env, t_msh *g_msh);
 void	create_environment_var(char *token_str, t_list **env, t_msh *g_msh);
 t_list	*get_sorted_env(t_list *env, t_msh *g_msh);
 

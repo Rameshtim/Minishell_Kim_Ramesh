@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 10:29:13 by dds               #+#    #+#             */
-/*   Updated: 2023/08/03 17:26:35 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 09:53:12 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 09:53:14 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_export.h"
-
-/*
-** - If no arguments print all environment variables (including unnassigned
-** ones(e.g. VAR instead of VAR=10))
-** - If there are arguments each argument is a potential environment variable
-** to be added to the environment variable linked list
-** @param:	- [t_list *] list of tokens in a command
-**			- [t_list **] pointer to envp linked list
-** @return:	[int] exit status
-** Line-by-line comments:
-** @16-17	In case the variable already exists we just need to update it in 
-**			the list and only if it is assigned: (e.g. If in envp ENVVAR=5
-**			export ENVVAR has no effect)
-** @20		If the variable doesn't exist we create a new node in the envp
-**			linked list
-*/
 
 int	ft_export(t_list *tokens, t_list **env, t_msh *g_msh)
 {
@@ -76,15 +60,6 @@ int	ft_export(t_list *tokens, t_list **env, t_msh *g_msh)
 	}
 	return (EXIT_SUCCESS);
 }
-
-/*
-** Prints all the environment variables with the proper formatting and sorted
-** in alphabetic order
-** @param:	- [t_list *] pointer to envp linked list
-** Line-by-line comments:
-** @12-18	If variable is assigned (has equal sign) then we need to add double
-**			quotes
-*/
 
 void	print_all_exported_vars(t_list *env, t_msh *g_msh)
 {

@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   environment1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 17:30:18 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 17:12:43 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 09:56:29 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 09:56:31 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "environment.h"
-
-/*
-** Goes through token and redirections list and replaces environment variables
-** by the respective values in case there are special characters:
-** - '$' followed by an environment variable - value in env var global variable
-** - '~' - HOME directory
-** - '$?' - last exit status
-** (except for single quotes delimiter)
-** @param:	- [t_list *] list of token strings that will be analyzed
-**			- [t_list *] list of redirections strings that will be analyzed
-** Line-by-line comments:
-** @4-9		Go through each token and replace it in case there is a dollar sign
-** @10-11	Deletes nodes that have an empty token after executiong of
-**			replace_env_single_token() (e.g. echo $WRONG_ENV)
-** @12-17	Go through each redirection and replace it in case there is a
-**			dollar sign ($)
-*/
 
 void	replace_envs(t_list **tokens, t_list *redirs, t_msh *g_msh)
 {
@@ -49,26 +32,6 @@ void	replace_envs(t_list **tokens, t_list *redirs, t_msh *g_msh)
 		redirs = redirs->next;
 	}
 }
-
-/*
-** Replaces token in case of environment variables and special characters. The
-** token is split. For instance:
-** $ echo "$TERM"'$PATH'hello1"hel'lo2"'hel"lo3'
-** xterm-256color$PATHhello1hel'lo2hel"lo3
-** So we need to handle each subsegment of the token differently even if there
-** isn't a space separating it
-** @param:	- [char **] token
-** Line-by-line comments:
-** @5		Split token in a linked list for ease of manipulation
-** @6		We need to keep the head of the linked list to free it when we are
-**			done
-** @10-11	Tilde expansion only occurs if tilde is first character and is
-**			either the only character or followed by a forward slash
-** @12		These expansions don't occur if tokens are inbetween single	quotes
-** $14-16	Case: the token piece is only $PATH or $TERM
-** @19		Replacing $? special parameter with exit status of last cmd
-** @21		Deleting unnecessary quotes. See previous example
-*/
 
 void	replace_env_single_token(char **token, t_msh *g_msh)
 {
@@ -99,22 +62,6 @@ void	replace_env_single_token(char **token, t_msh *g_msh)
 	*token = join_split_token(split_token, g_msh);
 }
 
-/*
-** Finds dollar signs in tokens and replaces the following with the correct
-** value
-** @param:	- [char *] Tokens (which can be strings with spaces when using
-**					   double quotes) 
-** Line-by-line comments:
-** @14		In case of executables, we don't display the whole path
-			(e.g. /bin/ls becomes ls)
-** @16		Replaces the token string with another with the respective value
-** @17		Replace_midstring() can be emptying the str so that there is only
-**			a NULL character as the only character. If we don't check before
-**			incrementing, we risk doing a segfault
-** @21		We increment for the lenght of the inserted string and decrease one
-**			index to account for the '$'
-*/
-
 void	replace_vars_with_values(char **str, t_msh *g_msh)
 {
 	int		i;
@@ -144,14 +91,6 @@ void	replace_vars_with_values(char **str, t_msh *g_msh)
 	}
 }
 
-/*
-** Tilde character gets replaced by home directory if:
-** - it is the first character of the token
-** - only character in token or followed by forward slash
-** - token not between single quotes (they prevent expansions)
-** @param:	- [char **] token string
-*/
-
 void	replace_tilde_with_home(char **token, t_msh *g_msh)
 {
 	char	*home_path;
@@ -165,16 +104,6 @@ void	replace_tilde_with_home(char **token, t_msh *g_msh)
 	else
 		tilde_join(token, &home_path, g_msh);
 }
-
-/*
-** In case the file refers to an executable from the path files it will be
-** replaced by their file names
-** @param:	- [char *] "$_"
-** @return:	[char *] value to replace $_
-** Line-by-line comments:
-** @6		Checks if underscore value is an absolute path to a file executable
-** @7		Replace full path of executable with its name
-*/
 
 char	*get_last_exec_name(char *underscore, t_msh *g_msh)
 {

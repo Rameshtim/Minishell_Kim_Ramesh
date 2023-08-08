@@ -77,7 +77,7 @@ char	*replace_midstring(char *original,
 	char	*final;
 	int		len;
 	int		i;
-
+	
 	i = 0;
 	len = ft_strlen(original) - ft_strlen(old_substr) + ft_strlen(new_substr);
 	final = ft_calloc(len + 1, sizeof(char));
@@ -92,12 +92,59 @@ char	*replace_midstring(char *original,
 			original += ft_strlen(old_substr);
 			replace_i = -2;
 		}
+		
 		if (*original)
+		{
 			final[i++] = *(original++);
+		}
 	}
 	final[i] = '\0';
 	return (final);
 }
+
+
+
+/* 
+original is input
+old_substr can be $HOME,             $?, $USER
+new_substr can be /nfs/homes/hongbaki, 0, hongbaki
+final should change old_substr to new_substr in middle of input
+ex) echo  -nnan"$USER  c $?$HOME" ab
+-> -nnanhongbaki   c 0/nfs/homes/hongbaki ab
+
+char	*replace_midstring(char *original,
+							char *old_substr,
+							char *new_substr,
+							int replace_i, t_msh *g_msh)
+{
+	char	*final;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(original) - ft_strlen(old_substr) + ft_strlen(new_substr);
+	final = ft_calloc(len + 1, sizeof(char));
+	if (final == 0)
+		quit_program(EXIT_FAILURE, g_msh);
+	while (*original)
+	{
+		if (i == replace_i)
+		{
+			while (new_substr && *new_substr)
+				final[i++] = *(new_substr++);
+			original += ft_strlen(old_substr);
+			//make old_substr empty
+			replace_i = -2;
+		}
+		
+		if (*original)
+		{
+			final[i++] = *(original++);
+		}
+	}
+	final[i] = '\0';
+	return (final);
+} */
 
 void	tilde_join(char **str, char **home_path, t_msh *g_msh)
 {

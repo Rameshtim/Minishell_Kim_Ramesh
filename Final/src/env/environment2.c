@@ -132,6 +132,7 @@ void	replace_status_env(char **str, int last_status, t_msh *g_msh)
 		if (status_string == 0)
 			return (quit_program(EXIT_FAILURE, g_msh));
 		final = replace_midstring(*str, "$?", status_string, replace_spot, g_msh);
+		printf("final : %s\n", final);
 		free(status_string);
 		status_string = 0;
 		free(*str);

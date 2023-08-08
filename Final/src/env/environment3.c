@@ -59,6 +59,26 @@ char	*join_split_token(t_list *split_token, t_msh *g_msh)
 	return (token);
 }
 
+/* 
+//list to array
+char	*join_split_token(t_list *split_token, t_msh *g_msh)
+{
+	char	*token;
+	int		new_token_size;
+
+	new_token_size = get_new_token_size(split_token);
+	token = ft_calloc(new_token_size + 1, sizeof(char));
+	if (!token)
+		quit_program(EXIT_FAILURE, g_msh);
+	while (split_token)
+	{
+		ft_strcat(token, (char *)split_token->data);
+		split_token = split_token->next;
+	}
+	ft_lstclear(&split_token, free);
+	return (token);
+} */
+
 int	get_new_token_size(t_list *split_token)
 {
 	int		size;
@@ -95,3 +115,27 @@ void	replace_one_var(char **str, t_msh *g_msh)
 	free(*str);
 	*str = trimmed;
 }
+
+/* void	replace_one_var(char **str, t_msh *g_msh)
+{
+	char	*env;
+	char	*trimmed;
+
+	//skip '$'
+	env = ft_getenv((*str + 1), g_msh);
+	if (!env)
+	{
+		free(*str);
+		*str = ft_strdup("");
+		if (!*str)
+			quit_program(EXIT_FAILURE, g_msh);
+		return ;
+	}
+	//delete all white space from beginning and end.
+	trimmed = ft_strtrim(env, " ");
+	if (!trimmed)
+		quit_program(EXIT_FAILURE, g_msh);
+	free(env);
+	free(*str);
+	*str = trimmed;
+} */

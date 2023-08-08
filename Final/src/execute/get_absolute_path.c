@@ -95,3 +95,30 @@ char	*get_correct_path(char *program_name, char **path_env_split, t_msh *g_msh)
 	}
 	return (absolute_path);
 }
+
+/* char	*get_correct_path(char *program_name, char **path_env_split, t_msh *g_msh)
+{
+	char		*absolute_path;
+	int			i;
+	struct stat	statbuf;
+
+	i = 0;
+	while (path_env_split[i])
+	{
+		absolute_path = ft_strjoin(path_env_split[i], program_name);
+		if (!absolute_path)
+			quit_program(EXIT_FAILURE, g_msh);
+		//whether a file or directory specified by its absolute path exists 
+		if (stat(absolute_path, &statbuf) == EXIT_SUCCESS)
+			break ;
+		free(absolute_path);
+		i++;
+	}
+	if (!path_env_split[i])
+	{
+		absolute_path = ft_strdup(program_name);
+		if (!absolute_path)
+			quit_program(EXIT_FAILURE, g_msh);
+	}
+	return (absolute_path);
+} */

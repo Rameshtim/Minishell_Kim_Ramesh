@@ -79,6 +79,31 @@ void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_ms
 	close(saved_stdout);
 }
 
+/* void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_msh)
+{
+	"      env      "
+	int	saved_stdin;
+	int	saved_stdout;
+	int	nb_cmds;
+
+	nb_cmds = cmd_table->nb_cmds;
+	replace_envs(&cmd->tokens, cmd->redirs, g_msh);
+	saved_stdin = dup(STDIN_FILENO);
+	saved_stdout = dup(STDOUT_FILENO);
+	set_redirs_pipes(cmd->redirs, cmd_table, process_index, g_msh);
+	if (g_msh->exit_status == EXIT_SUCCESS && cmd->tokens != 0)
+	{
+		if (is_builtin(cmd->tokens))
+			exec_builtin(cmd->tokens, &g_msh->dup_envp, nb_cmds, process_index, g_msh);
+		else
+			exec_program(cmd->tokens, cmd_table, g_msh);
+	}
+	dup2(saved_stdin, STDIN_FILENO);
+	dup2(saved_stdout, STDOUT_FILENO);
+	close(saved_stdin);
+	close(saved_stdout);
+} */
+
 void	exec_builtin(t_list *tokens,
 					t_list **env,
 					int nb_cmds,

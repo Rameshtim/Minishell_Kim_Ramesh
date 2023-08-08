@@ -41,6 +41,38 @@ void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, t_msh *g_m
 	exit(errno);
 }
 
+/* 
+void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, t_msh *g_msh)
+{
+	char	*exec_path;
+
+	signal(SIGINT, SIG_DFL);
+	close_all_pipes(pipes, nb_cmds);
+	if (has_relative_path(tokens[0]) || has_absolute_path(tokens[0]))
+	{
+		exec_path = ft_strdup(tokens[0]);
+		if (!exec_path)
+			quit_program(EXIT_FAILURE, g_msh);
+	}
+	else
+		exec_path = get_absolute_path(tokens[0], g_msh);
+	//something is run, remove and replace 
+	execve(exec_path, tokens, envp);
+	if (errno == EACCES)
+		write_msh_exec_error(tokens[0], "Permission denied");
+	else if (errno == ENOENT && ft_strcmp(tokens[0], "exit") != 0)
+		write_msh_exec_error(tokens[0], "command not found");
+	free(exec_path);
+	free(tokens);
+	free(envp);
+	if (errno == EACCES)
+		exit(EXIT_CMD_INTERRUPTED);
+	else if (errno == ENOENT)
+		exit(EXIT_CMD_NOT_FOUND);
+	exit(errno);
+} 
+*/
+
 void	exec_parent(t_list **pids, t_msh *g_msh)
 {
 	long	pid;

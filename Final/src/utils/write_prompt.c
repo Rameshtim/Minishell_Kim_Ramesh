@@ -6,7 +6,7 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 10:38:08 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 14:58:09 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:56:35 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@
 
 void	write_prompt(void)
 {
-	ft_putstr("minishell: ");
+	ft_putstr_fd("minishell: ", 1);
 }

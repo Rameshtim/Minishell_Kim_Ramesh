@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:10:23 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/25 11:27:33 by dda-silv         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:56:07 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void	catch_sigint(int signum)
 {
 	(void)signum;
-	ft_putstr("\n");
+	ft_putstr_fd("\n", 1);
 }
 
 /*

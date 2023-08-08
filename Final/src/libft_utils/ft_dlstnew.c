@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 16:00:54 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/08/08 13:37:51 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 13:45:35 by rtimsina          #+#    #+#             */
+/*   Updated: 2023/08/08 13:46:03 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_utils.h"
 
-char	*ft_strcpy(char	*dest, const char *src)
+t_dlist	*ft_dlstnew(void *data)
 {
-	if (!src)
-		return (NULL);
-	while (*src)
-	{
-		*dest++ = *src++;
-	}
-	*dest = '\0';
-	return (dest);
-}
+	t_dlist	*new_node;
 
-char	*ft_strcat(char *dest, char *src)
-{
-	char	*str;
-
-	str = dest;
-	if (!src)
-		return (NULL);
-	while (*str)
-		str++;
-	while (*src)
-		*str++ = *src++;
-	*str = '\0';
-	return (str);
+	new_node = malloc(sizeof(t_dlist));
+	if (!new_node)
+		return (0);
+	new_node->data = data;
+	new_node->next = 0;
+	new_node->prev = 0;
+	return (new_node);
 }

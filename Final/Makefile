@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
+#    By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/05/14 11:03:43 by dda-silv         ###   ########.fr        #
+#    Updated: 2023/08/08 13:57:40 by rtimsina         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ FLAG_MEM_LEAK		:= 		-fsanitize=address
 
 # Flags - linking
 FLAG_LIBFT			:=		-L$(PATH_LIBFT) -lft
-FLAG_TERMCAPS		:=		-lncurses -ltermcap
+FLAG_TERMCAPS		:=		-lncurses -ltermcap -lreadline
 FLAGS_LINKING		:=		$(FLAG_LIBFT) $(FLAG_TERMCAPS)
 
 # Others commands

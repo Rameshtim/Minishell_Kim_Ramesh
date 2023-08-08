@@ -6,33 +6,11 @@
 /*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:12:24 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/07/30 14:12:24 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:44:25 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_utils.h"
-
-char	*ft_strtrim_all(const char *s1, const char *set)
-{
-	char	*new_str;
-	char	**split;
-	size_t	new_str_len;
-
-	if (!s1)
-		return (0);
-	split = ft_split((char *)s1, (char *)set);
-	if (!split)
-		return (0);
-	new_str_len = get_lenth(split);
-	if (new_str_len == 0)
-		return (ft_strdup(""));
-	new_str = ft_calloc(new_str_len + 1, sizeof(char));
-	if (!new_str)
-		return (0);
-	concat_all(new_str, split);
-	free_arr((void **)split);
-	return (new_str);
-}
 
 static	void	concat_all(char *dest, char **strs)
 {
@@ -57,4 +35,26 @@ static size_t get_lenth(char **strs)
 		strs++;
 	}
 	return (len);
+}
+
+char	*ft_strtrim_all(const char *s1, const char *set)
+{
+	char	*new_str;
+	char	**split;
+	size_t	new_str_len;
+
+	if (!s1)
+		return (0);
+	split = ft_split((char *)s1, set[0]);
+	if (!split)
+		return (0);
+	new_str_len = get_lenth(split);
+	if (new_str_len == 0)
+		return (ft_strdup(""));
+	new_str = ft_calloc(new_str_len + 1, sizeof(char));
+	if (!new_str)
+		return (0);
+	concat_all(new_str, split);
+	free_arr((void **)split);
+	return (new_str);
 }

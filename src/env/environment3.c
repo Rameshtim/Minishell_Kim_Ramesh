@@ -20,7 +20,7 @@ t_list	*get_split_token(char *token, t_msh *g_msh)
 	int		curr_pos;
 	int		saved_pos;
 
-	split_token = 0;
+	split_token = NULL;
 	curr_pos = 0;
 	saved_pos = 0;
 	while (token[curr_pos])
@@ -32,11 +32,21 @@ t_list	*get_split_token(char *token, t_msh *g_msh)
 			skip_letters((const char *)token, &curr_pos);
 		token_piece = ft_substr(token, saved_pos, curr_pos - saved_pos);
 		if (!token_piece)
+		{
+			//added 1 line for
+			ft_lstclear(&split_token, free);
 			quit_program(EXIT_FAILURE, g_msh);
+		}
 		new_node = ft_lstnew((void *)token_piece);
 		if (!new_node)
+		{
+			//added 2 line for free
+			free(token_piece);
+			ft_lstclear(&split_token, free);
 			quit_program(EXIT_FAILURE, g_msh);
+		}
 		ft_lstadd_back(&split_token, new_node);
+		free(token_piece);
 	}
 	return (split_token);
 }

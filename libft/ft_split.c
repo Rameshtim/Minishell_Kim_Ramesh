@@ -3,110 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 16:54:33 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/11 16:54:54 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/11 14:47:04 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/11 14:47:04 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_word(const char *s, char c)
+static int	ft_wdcount(const char *str, char c)
 {
-	size_t	i;
-	size_t	words;
+	int	trigger;
+	int	count;
 
-	i = 0;
-	words = 0;
-	if (!s[0])
-		return (0);
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i] != '\0')
+	trigger = 0;
+	count = 0;
+	while (*str)
 	{
-		if (s[i] == c)
+		if (*str != c && trigger == 0)
 		{
-			words++;
-			while (s[i] && s[i] == c)
-				i++;
-			continue ;
+			trigger = 1;
+			count++;
 		}
-		i++;
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	if (s[i - 1] != c)
-		words++;
-	return (words);
+	return (count);
 }
 
-/*
-Deallocate or release the memory blocks to reduce their wastage.
-dynamically de-allocate the memory.
-*/
-static void	free_all(char **str)
+static int	ft_word_size(const char *s, char c, int i)
 {
-	int	i;
+	int	size;
 
-	i = 0;
-	while (str[i])
+	size = 0;
+	while (s[i] != c && s[i])
 	{
-		free(str[i]);
 		i++;
+		size++;
+	}
+	return (size);
+}
+
+static void	ft_free(char **str, int j)
+{
+	while (j)
+	{
+		free(str[j]);
+		j--;
 	}
 	free(str);
 }
 
-/*
-Using malloc 
-*/
-static char	**ft_my_malloc(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**ret;
-
-	ret = malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
-	return (ret);
-}
-
-char	**ft_split(const char *s, char c)
-{
-	char	**ret;
-	size_t	len;
-	size_t	i;
+	int		i;
+	int		j;
+	int		word;
+	int		size;
+	char	**str;
 
 	i = 0;
-	ret = ft_my_malloc(s, c);
-	if (!s || !ret)
+	j = -1;
+	word = ft_wdcount(s, c);
+	str = (char **)malloc((word + 1) * sizeof(char *));
+	if (!str)
 		return (NULL);
-	while (*s)
+	while (++j < word)
 	{
-		if (*s != c)
-		{
-			len = 0;
-			while (*s && *s != c && ++len)
-				++s;
-			ret[i] = ft_substr(s - len, 0, len);
-			if (!ret[i])
-				free_all(ret);
+		while (s[i] == c)
 			i++;
-		}
-		else
-			s++;
+		size = ft_word_size(s, c, i);
+		str[j] = ft_substr(s, i, size);
+		if (!str[j])
+			ft_free(str, j);
+		i = size + i;
 	}
-	ret[i] = 0;
-	return (ret);
+	str[j] = NULL;
+	return (str);
 }
-/*
-int main()
-{
-    char **tab;
-    unsigned int    i;
-
-    i = 0;
-    tab = ft_split(" abc de fg", ' ');
-    while (tab[i])
-    {
-        printf("%s\n", tab[i]);
-        i++;
-    }
-    return (0);
-}*/

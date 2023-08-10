@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 10:31:58 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 16:13:31 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 09:52:27 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 09:52:28 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_env.h"
-
-/*
-** Prints environment variable string linked lists one by one
-** @param:	- [t_list *] environment variable string linked list
-** @return:	[int] exit status 
-** Line-by-line comments:
-** @3		We want the _ env variable to be /usr/bin/env when the user calls
-**			env
-*/
 
 int	ft_env(t_list *env, t_msh *g_msh)
 {

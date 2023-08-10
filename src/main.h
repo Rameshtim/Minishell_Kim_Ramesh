@@ -28,7 +28,9 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "../libft/src/libft.h"
+
+# include "../libft/libft.h"
+# include "../libft_utils/libft_utils.h"
 
 # include "structs.h"
 # include "constants.h"
@@ -49,6 +51,7 @@
 # include "execute_utils.h"
 # include "fork_exec_wait.h"
 # include "redirections_pipes.h"
+# include "redirections_pipes_2.h"
 # include "get_absolute_path.h"
 
 # include "parse.h"
@@ -66,7 +69,5 @@
 # include "write_err_message.h"
 # include "write_prompt.h"
 # include "utils.h"
-
-//extern t_msh	g_msh;
 
 #endif

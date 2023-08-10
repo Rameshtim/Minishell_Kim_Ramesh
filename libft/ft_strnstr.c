@@ -3,48 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 14:34:54 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/11 14:35:33 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/05 18:08:43 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/19 17:18:54 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-Returns str if find is empty
-(char*)str + i) is same as  (char*)&str[i]
-Returns a pointer to the first character of the string if find is found
-Returns NULL if find is not found
-*/
-char	*ft_strnstr(const char *str, const char *find, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
-	if (find[0] == '\0')
-		return ((char *)str);
 	i = 0;
-	while (str[i] && i < len)
+	j = 1;
+	if (!*little)
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
 	{
-		j = 0;
-		while (str[i + j] == find[j] && i + j < len)
+		if (big[i] == little[0])
 		{
-			j++;
-			if (find[j] == '\0')
-				return ((char *)str + i);
+			while (little[j] != '\0' && (i + j) < len && \
+					(big[i + j] == little[j]))
+				j++;
+			if (little[j] == '\0')
+				return ((char *)&big[i]);
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
-/*
-int main()
-{
-    char    str[] = "Hello world how are you";
-    char    *ptr1 = ft_strnstr(str, "wo", 10);
-    printf("%s\n", ptr1);
-    
-    return (0);
-}*/

@@ -3,48 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 14:42:38 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/11 15:47:34 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/08 11:07:12 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/08 11:07:12 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-Copies len of str from start position to where the new memory has been allocated
-*/
 
-char	*ft_substr(char const *str, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*newstr;
+	char	*dst;
 	size_t	i;
-	size_t	j;
 
-	if (!str)
+	if (s == NULL)
 		return (NULL);
-	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newstr)
+	if (ft_strlen(s) < start)
+	{
+		dst = malloc(sizeof(char));
+		if (dst == NULL)
+			return (NULL);
+		dst[0] = '\0';
+		return (dst);
+	}
+	if (start + len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	dst = malloc(sizeof(char) * (len + 1));
+	if (dst == NULL)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (start <= i && j < len)
-		{
-			newstr[j] = str[i];
-			j++;
-		}
-		i++;
-	}
-	newstr[j] = '\0';
-	return (newstr);
+	while (++i - 1 < len)
+		*(dst + i - 1) = *(s + start + i - 1);
+	*(dst + i - 1) = '\0';
+	return (dst);
 }
-/*
-int	main()
-{
-	char	*answer;
-
-	answer = ft_substr("ABCDEFG", 3, 2);
-	printf("%s\n", answer);
-}*/

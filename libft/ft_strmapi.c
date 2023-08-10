@@ -3,60 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 10:23:45 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/13 10:25:13 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/12 15:20:51 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/12 15:20:51 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-(*f) = name of function
-(unsigned int, char) =  two parameter
-
-Applies the function 'f' to each character of the string 's'
-to create a new string with malloc
-
-resulting form successive application of 'f'
-*/
-char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*newstr;
-	unsigned int	len;
+	int				len;
+	char			*str;
 	unsigned int	i;
 
-	if (!str || !f)
-		return (0);
-	len = ft_strlen(str);
-	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newstr)
-		return (0);
 	i = 0;
-	while (str[i])
+	len = ft_strlen(s);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		newstr[i] = f(i, str[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	newstr[i] = '\0';
-	return (newstr);
+	str[i] = '\0';
+	return (str);
 }
-/*
-char f(unsigned int i, char c)
-{
-    if (i + 1)
-    {
-        if (ft_isalpha(c))
-            c = c - 32;
-    }
-    return (c);
-}
-
-int	main()
-{
-    char    *str = "hello world";
-    printf("%s\n", ft_strmapi(str, f));
-    return (0);
-}
-*/

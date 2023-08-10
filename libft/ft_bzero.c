@@ -3,60 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 13:50:23 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/11 13:50:25 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/02 13:38:50 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/19 16:22:50 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-The bzero() function places n zero-valued bytes
-in the area pointed to by str.
-
-Parameters void    ft_bzero(void *str, size_t n)
-    *str
-        pointer to the block of memory to fill
-    n
-		This is number of bytes to be set to the value.
-*/
-void	ft_bzero(void *str, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t				i;
-	unsigned char		*newstr;
+	size_t			i;
+	unsigned char	*src;
 
-	newstr = str;
 	i = 0;
-	while (i < n)
+	src = s;
+	while (n > 0)
 	{
-		newstr[i] = 0;
+		src[i] = '\0';
 		i++;
+		n--;
 	}
 }
-/*int main(void)
-{
-    char    check[27] = "abcdefghijklmnopqrstuvwxyz";
-    char    ft_check[27] = "abcdefghijklmnopqrstuvwxyz";
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-    bzero(check, 20);
-    ft_bzero(ft_check, 20);
-    while (i < 27)
-    {
-        printf("%d", check[i]);
-        i++;
-    }
-    printf("\n");
-    while (j < 27)
-    {
-        printf("%d", ft_check[j]);
-        j++;
-    }
-    printf("\n");
-    return (0);
-} */

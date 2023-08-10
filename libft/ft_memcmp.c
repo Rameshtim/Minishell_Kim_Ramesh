@@ -3,44 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 11:39:04 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/07 11:39:08 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/05 17:56:57 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/13 16:47:49 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-The  memcmp()  function  compares  the first n bytes
-(each interpreted as unsigned char) of the memory areas s1 and s2.
-*/
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*news1;
-	const unsigned char	*news2;
-	size_t				i;
+	const unsigned char	*src1;
+	const unsigned char	*src2;
 
-	i = 0;
-	news1 = s1;
-	news2 = s2;
-	while (i < n)
+	src1 = s1;
+	src2 = s2;
+	while (n > 0)
 	{
-		if (*(news1 + i) != *(news2 + i))
-			return (*(news1 + i) - *(news2 + i));
-		i++;
+		if (*src1 != *src2)
+			return (*src1 - *src2);
+		n--;
+		src1++;
+		src2++;
 	}
 	return (0);
 }
-/*int main()
-{
-    const void *s1 = "ABCD";
-    const void *s2 = "ABCE";
-    int sn;
-    size_t  n = 4;
-
-    sn = ft_memcmp(s1, s2, n);
-    printf("Result: %d\n", sn);
-    return (0);
-}*/

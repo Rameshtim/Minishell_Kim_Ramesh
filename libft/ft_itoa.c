@@ -3,63 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 09:52:34 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/13 09:52:35 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/12 11:36:06 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/12 11:36:06 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nb_len(int nb)
+static int	ft_len(long n)
 {
 	int	len;
 
 	len = 0;
-	if (nb <= 0)
-		len++;
-	while (nb)
+	if (n == 0)
+		len = 1;
+	if (n < 0)
 	{
+		n = n * -1;
 		len++;
-		nb = nb / 10;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		len++;
 	}
 	return (len);
 }
 
-/*
-The long data type stores integers like int,
-but gives a wider range of values at the cost of taking more memory
-*/
 char	*ft_itoa(int n)
 {
-	int		len;
-	char	*str;
-	long	nb;
+	char		*str;
+	long		nb;
+	int			i;
 
-	len = ft_nb_len(n);
 	nb = n;
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	i = ft_len(nb);
+	str = (char *)malloc(sizeof(char) * (i + 1));
 	if (!str)
-		return (0);
+		return (NULL);
+	if (n == 0)
+		str[0] = '0';
+	str[i] = '\0';
+	i--;
 	if (nb < 0)
 	{
 		str[0] = '-';
-		nb = -nb;
+		nb = nb * -1;
 	}
-	if (nb == 0)
-		str[0] = '0';
-	str[len--] = '\0';
-	while (nb)
+	while (nb > 0 && i >= 0)
 	{
-		str[len] = nb % 10 + '0';
-		len--;
+		str[i] = nb % 10 + '0';
 		nb = nb / 10;
+		i--;
 	}
 	return (str);
 }
-/*
-int	main()
-{
-	printf("%s\n", ft_itoa(-847217));
-}*/

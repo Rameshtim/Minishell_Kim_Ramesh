@@ -3,54 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 13:53:35 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/05 13:53:38 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/04 15:14:05 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/04 15:14:05 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-The strlcat() function returns the total length of the string
-that would have been created if there was unlimited space.
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	char		*sav_d;
+	const char	*sav_s;
+	int			n;
+	int			length_dst;
 
-This might or might not be equal to the length of the string
-actually created, depending on whether there was enought space.
-*/
+	sav_d = dst;
+	sav_s = src;
+	n = size;
+	while (n-- != 0 && *sav_d != '\0')
+		sav_d++;
+	length_dst = sav_d - dst;
+	n = size - length_dst;
+	if (n == 0)
+		return (length_dst + ft_strlen(sav_s));
+	while (*sav_s != '\0')
+	{
+		if (n != 1)
+		{
+			*sav_d++ = *sav_s;
+			n--;
+		}
+		sav_s++;
+	}
+	*sav_d = '\0';
+	return (length_dst + sav_s - src);
+}
 
-//strlcat adds from the string src to end of dest with dest-1
-//returns with dest length + src length
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+/* size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	destlen;
-	size_t	srclen;
+	size_t	j;
+	size_t	slen;
+	size_t	dlen;
 
 	i = 0;
-	destlen = ft_strlen(dest);
-	srclen = ft_strlen(src);
-	if (size <= destlen)
-		return (srclen + size);
-	while (src[i] != '\0' && (destlen + i) < (size - 1))
+	j = 0;
+	j = ft_strlen(dst);
+	dlen = j;
+	slen = ft_strlen(src);
+	if (size == 0 || size <= dlen)
+		return (slen + size);
+	while (src[i] != '\0' && (i < (size - dlen -1)))
 	{
-		dest[destlen + i] = src[i];
+		dst[j] = src[i];
 		i++;
+		j++;
 	}
-	dest[destlen + i] = '\0';
-	return (destlen + srclen);
+	dst[j] = '\0';
+	return (dlen + slen);
 }
-/*
-int main(void)
-{
-    char    dest1[] = "Hell";
-    char    src1[] = "world";
-    int r1;
-
-    r1 = ft_strlcat(dest1, src1, 8);
-    printf("%s\n", dest1);
-    printf("%d\n", r1);
-    //ft_strlcat(dest, src, 8);
-    //printf("%s\n", dest);
-}*/
+ */

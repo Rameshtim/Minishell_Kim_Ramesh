@@ -3,66 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 14:28:43 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/11 14:28:45 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/04 12:02:59 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/04 12:02:59 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-The strlcpy() function returns the total length of the string
-that would have been copied if there was unlimited space
-
-strlcpy() takes the full size of the buffer,
-not only the length,
-and terminate the result with NUL as long as is greater than 0.
-Inlude a byte for the NUL in your value. size size.
-
-strlcpy copies from the string src to end of dest with dest-1
-returns with src length
-*/
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	char		*sav_d;
+	const char	*sav_s;
+	size_t		n;
 
-	if (!dest || !src)
-		return (0);
-	i = 0;
-	if (!size)
+	sav_d = dst;
+	sav_s = src;
+	n = size;
+	if (n != 0)
 	{
-		while (src[i] != '\0')
-			i++;
-		return (i);
+		while (--n != 0)
+		{
+			*sav_d = *sav_s++;
+			if (*sav_d++ == '\0')
+				break ;
+		}
 	}
-	i = 0;
-	while (src[i] != '\0' && i < (size - 1))
+	if (n == 0)
 	{
-		dest[i] = src[i];
-		i++;
+		if (size != 0)
+			*sav_d = '\0';
+		while (*sav_s++)
+			;
 	}
-	if (i < size)
-		dest[i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	return (sav_s - src - 1);
 }
-/*
-int main(void)
-{
-    char    dest1[] = "";
-    char    src1[] = "lets see what happen";
-    int r1;
-    //char    dest2[] = "";
-    //char    src2[] = "";
-    //int r2;
 
-    r1 = ft_strlcpy(dest1, src1, 4);
-    printf("%s\n", dest1);
-    printf("%d\n", r1);
-    //r2 = ft_strlcpy(dest2, src2, 0);
-    //printf("%s\n", dest2);
-    //printf("%d\n", r2);
-}*/
+/* size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	src_len;
+	size_t	n;
+
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	if (src_len >= size)
+		n = size - 1;
+	else
+		n = src_len;
+	ft_memcpy(dst, src, n);
+	dst[n] = '\0';
+	return (src_len);
+}
+ */

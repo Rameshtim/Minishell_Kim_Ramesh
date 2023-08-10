@@ -3,60 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 18:05:12 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/08 18:05:13 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/03 09:55:13 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/03 09:55:13 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-src < dest : copy direction is from back
-src < dest : copy direction is from front 
-*/
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t				i;
-	unsigned char		*d;
-	unsigned const char	*s;
+	const char	*s;
+	char		*d;
+	size_t		i;
 
-	if (!dest || !src)
-		return (0);
-	i = 0;
-	d = dest;
+	if (!src && !dst)
+		return (NULL);
 	s = src;
-	if (s < d)
-	{
-		while (n--)
-			d[n] = s[n];
-	}
+	d = dst;
+	i = 0;
+	if (d > s)
+		while (len-- > 0)
+			d[len] = s[len];
 	else
 	{
-		while (i < n)
+		while (i < len)
 		{
 			d[i] = s[i];
 			i++;
 		}
 	}
-	return (dest);
+	return (dst);
 }
-/*
-int main(void)
-{
-	char    src1[] = "hijklmn";
-	char    dest1[] = "abcdefg";
-	
-	ft_memmove(dest1, src1, 5);
-	printf("%s\n", dest1);
-}
-*/
-/*
-    char    src1[6] = "abcdef";
-    char    *dest1 = src1 + 2;
-
-    ft_memmove(dest1, src1, 1);
-    printf("%s\n", dest1);
-
-*/

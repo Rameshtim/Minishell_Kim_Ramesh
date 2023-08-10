@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 15:00:17 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/13 15:00:18 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/12 18:49:50 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/12 18:49:50 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < 0)
+	long	ln;
+
+	ln = n;
+	if (ln < 0)
 	{
 		ft_putchar_fd('-', fd);
-		n = n * -1;
+		ln = ln * -1;
 	}
-	if (n <= 9)
-		ft_putchar_fd(n + '0', fd);
-	else
+	if (ln >= 10)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		ft_putnbr_fd(ln / 10, fd);
 	}
-	return ;
+	ft_putchar_fd((ln % 10) + '0', fd);
 }

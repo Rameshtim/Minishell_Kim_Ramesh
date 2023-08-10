@@ -3,37 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 15:08:27 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/09 15:08:32 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/08 10:13:39 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/08 10:13:39 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-Returns the memory address that copied the string
-(a pointer pointing to the address of the copied string)
-*/
-char	*ft_strdup(const char *str)
+char	*ft_strdup(const char *s)
 {
+	char	*dup;
+	size_t	len;
 	int		i;
-	int		len;
-	char	*newstr;
 
 	i = 0;
-	len = 0;
-	while (str[len])
-		len++;
-	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newstr)
-		return (0);
-	while (str[i] != '\0')
+	len = ft_strlen(s);
+	dup = (char *)malloc(len + 1);
+	if (dup == NULL)
+		return (NULL);
+	while (*s)
 	{
-		newstr[i] = str[i];
+		dup[i] = *s++;
 		i++;
 	}
-	newstr[i] = '\0';
-	return (newstr);
+	dup[i] = '\0';
+	return (dup);
 }

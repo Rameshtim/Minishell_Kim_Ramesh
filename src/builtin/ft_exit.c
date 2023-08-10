@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 10:41:56 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 16:51:33 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 09:52:43 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 09:52:44 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_exit.h"
-
-/*
-** Recreating the exit function based on different arguments. Mimics bash
-** @param:	- [t_list *] a list of all the arguments used with the exit cmd
-** Line-by-line comments:
-** @3-4		exit doesn't have to exit if there are more than one simple command
-**			in cmd_table but it still has to do thorough error handling
-** @5-6		Case: no arguments so the exit status sent is the one of the last
-**			executed simple command (e.g. cd asjoafsj; exit; echo $? STDOUT: 1)
-** @10-11	Case: first arg is a number but there are more than one arg. Doesn't
-**			exit. Sends error message and returns EXIT_FAILURE
-** @12-19	Case: non-numeric argument. Exits with error message
-** @20-21	Case: arg is a number and only one arg. Exits with arg as exit code
-*/
 
 int	ft_exit(t_list *args, t_msh *g_msh)
 {

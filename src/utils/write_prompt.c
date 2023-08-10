@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   write_prompt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 10:38:08 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 14:58:09 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/08 10:18:40 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/08 10:18:42 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "write_prompt.h"
 
-/*
-** Displays the prompt to the user
-** Line-by-line comments:
-** @1-4		Color of the prompt will the depend on the last exit_status
-** @6		Set back the color to white
-*/
-
 void	write_prompt(void)
 {
-	ft_putstr("minishell: ");
+	ft_putstr_fd("minishell: ", 1);
 }

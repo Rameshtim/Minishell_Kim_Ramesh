@@ -3,43 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 16:02:55 by hongbaki          #+#    #+#             */
-/*   Updated: 2022/12/08 16:30:14 by hongbaki         ###   ########.fr       */
+/*   Created: 2022/12/05 10:21:52 by rtimsina          #+#    #+#             */
+/*   Updated: 2022/12/05 10:21:52 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-The  memchr()  function  scans  the  initial n bytes of the memory area
-pointed to by str for the first instance of c.
-*/
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char	*strnew;
-	size_t				i;
+	unsigned char	*p;
+	unsigned char	ch;
 
-	i = 0;
-	strnew = str;
-	while (i < n)
+	p = (unsigned char *)s;
+	ch = (unsigned char)c;
+	while (n > 0)
 	{
-		if (strnew[i] == (unsigned char)c)
-			return ((char *)strnew + i);
-		i++;
+		if (*p == ch)
+			return ((void *)p);
+		p++;
+		n--;
 	}
-	return (0);
+	return (NULL);
 }
-/*
-int main()
-{
-    const void *str = "ABCDEF";
-    int c = 'F';
-    size_t n = 6;
-    char *sn;
-
-    sn = ft_memchr(str, c, n);
-    printf("Result: %s\n", sn);
-    return (0);
-}*/

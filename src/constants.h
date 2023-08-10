@@ -35,6 +35,7 @@
 # define CTRL_C 3
 # define ENTER_KEYCAP 10
 # define CTRL_B 28
+# define WHITE_SPACE " \t\n\v\f\r"
 
 # define EXIT_GENERAL_ERROR 2
 # define EXIT_CMD_NOT_FOUND 127

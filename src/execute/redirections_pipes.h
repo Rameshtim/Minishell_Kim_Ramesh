@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:01:05 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 10:44:40 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:40:30 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_redirs_pipes(t_list *redirs,
 			int process_index, t_msh *g_msh);
 int		has_redirs(t_list *redirs, char *type);
 int		open_all_files(t_list *redirs, t_msh *g_msh);
-int		open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, \
+int		of(t_redir *redir, int prev_fd, int flags, mode_t permissions, \
 t_msh *g_msh);
 
 #endif

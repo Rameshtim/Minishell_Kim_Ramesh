@@ -3,16 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   environment3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:59:26 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:59:27 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:39:11 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "environment.h"
 
 t_list	*get_split_token(char *token, t_msh *g_msh)
+{
+	t_list	*split_token;
+	t_list	*new_node;
+	char	*token_piece;
+	int		curr_pos;
+	int		saved_pos;
+
+	split_token = NULL;
+	curr_pos = 0;
+	saved_pos = 0;
+	while (token[curr_pos])
+	{
+		saved_pos = curr_pos;
+		if (is_quote(token[curr_pos]))
+			skip_quotes((const char *)token, &curr_pos);
+		else
+			skip_letters((const char *)token, &curr_pos);
+		token_piece = ft_substr(token, saved_pos, curr_pos - saved_pos);
+		if (!token_piece)
+			handle_memory_error(split_token, g_msh);
+		new_node = ft_lstnew((void *)token_piece);
+		if (!new_node)
+			hme_with_token_piece(token_piece, split_token, g_msh);
+		ft_lstadd_back(&split_token, new_node);
+	}
+	//free(token_piece);
+	/* if (new_node)
+		ft_lstclear(&new_node, free); */
+	return (split_token);
+}
+
+/* t_list	*get_split_token(char *token, t_msh *g_msh)
 {
 	t_list	*split_token;
 	t_list	*new_node;
@@ -49,7 +81,7 @@ t_list	*get_split_token(char *token, t_msh *g_msh)
 	if (new_node)
 		ft_lstclear(&new_node, free);
 	return (split_token);
-}
+} */
 
 char	*join_split_token(t_list *split_token, t_msh *g_msh)
 {

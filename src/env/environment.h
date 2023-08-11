@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:00:38 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 10:13:06 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:39:33 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ t_list	*get_split_token(char *token, t_msh *g_msh);
 char	*join_split_token(t_list *split_token, t_msh *g_msh);
 int		get_new_token_size(t_list *split_token);
 void	replace_one_var(char **str, t_msh *g_msh);
+
+/*
+** File environment4.c
+*/
+
+void	handle_memory_error(t_list *split_token, t_msh *g_msh);
+void	hme_with_token_piece(char *token_piece, t_list *split_token, \
+t_msh *g_msh);
 
 /*
 ** File save_last_token.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:41:00 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:41:01 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:38:31 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	update_directories(char *old_dir, t_list **env, t_msh *g_msh)
 		return (EXIT_FAILURE);
 	if (!is_env_var("PWD", *env))
 		create_environment_var("PWD", env, g_msh);
-	printf("new_dir : %s\n", new_dir);
 	update_environment_var("PWD", new_dir, *env, g_msh); 
 	if (!is_env_var("OLDPWD", *env))
 		create_environment_var("OLDPWD", env, g_msh);

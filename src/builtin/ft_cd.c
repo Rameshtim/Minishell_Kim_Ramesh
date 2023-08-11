@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:50:54 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 10:06:57 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:43:42 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_cd(t_list *tokens, t_list **env, t_msh *g_msh)
 		return (only_cd_errors(tokens, g_msh));
 	else
 		return (execute_cd(tokens, env, pwd, g_msh));
+	printf("getcwd : %s\n" ,getcwd(pwd, MAX_PATH));
 }
 
 int	execute_cd(t_list *tokens, t_list **env, char *pwd, t_msh *g_msh)

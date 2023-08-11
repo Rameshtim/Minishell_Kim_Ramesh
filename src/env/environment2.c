@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:57:03 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 10:21:21 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:27:35 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ char	*ft_getenv(char *key, t_msh *g_msh)
 			i++;
 			value = ft_strdup(&(curr_envp[i]));
 			if (!value)
+			{
+				//triying to figure out memory leak for cd
+				free(value);
 				quit_program(EXIT_FAILURE, g_msh);
+			}
 			return (value);
 		}
 		envp = envp->next;

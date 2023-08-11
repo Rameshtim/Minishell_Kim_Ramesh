@@ -33,14 +33,12 @@ t_list	*get_split_token(char *token, t_msh *g_msh)
 		token_piece = ft_substr(token, saved_pos, curr_pos - saved_pos);
 		if (!token_piece)
 		{
-			//added 1 line for
 			ft_lstclear(&split_token, free);
 			quit_program(EXIT_FAILURE, g_msh);
 		}
 		new_node = ft_lstnew((void *)token_piece);
 		if (!new_node)
 		{
-			//added 2 line for free
 			free(token_piece);
 			ft_lstclear(&split_token, free);
 			quit_program(EXIT_FAILURE, g_msh);
@@ -48,6 +46,8 @@ t_list	*get_split_token(char *token, t_msh *g_msh)
 		ft_lstadd_back(&split_token, new_node);
 		free(token_piece);
 	}
+	if (new_node)
+		ft_lstclear(&new_node, free);
 	return (split_token);
 }
 

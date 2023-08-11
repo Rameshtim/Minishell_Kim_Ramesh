@@ -6,7 +6,7 @@
 /*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:56:29 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 12:52:16 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:59:36 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	replace_env_single_token(char **token, t_msh *g_msh)
 	}
 	free(*token);
 	*token = join_split_token(split_token, g_msh);
-	free(token_piece);
 	free(split_token);
+	free(token_piece);
 }
 
 /* void	replace_env_single_token(char **token, t_msh *g_msh)

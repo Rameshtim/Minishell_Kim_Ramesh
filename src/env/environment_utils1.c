@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment_utils1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:55:03 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:55:04 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:22:33 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*replace_midstring(char *original,
 	char	*final;
 	int		len;
 	int		i;
-	
+
 	i = 0;
 	len = ft_strlen(original) - ft_strlen(old_substr) + ft_strlen(new_substr);
 	final = ft_calloc(len + 1, sizeof(char));
@@ -92,7 +92,6 @@ char	*replace_midstring(char *original,
 			original += ft_strlen(old_substr);
 			replace_i = -2;
 		}
-		
 		if (*original)
 		{
 			final[i++] = *(original++);
@@ -101,8 +100,6 @@ char	*replace_midstring(char *original,
 	final[i] = '\0';
 	return (final);
 }
-
-
 
 /* 
 original is input

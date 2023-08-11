@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/29 15:28:18 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 17:14:12 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:10 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:59:29 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	delete_single_char(t_termcaps *termcaps, char *buf, int *i);
 ** File get_input2.c
 */
 
-void	reset_cmd_line(char *buf, int *i, t_dlist **input_history, t_msh *g_msh);
+void	reset_cmd_line(char *buf, int *i, t_dlist **input_history, \
+t_msh *g_msh);
 void	exit_program(char *buf, int i, t_msh *g_msh);
 char	*extract_input(char *buf, int i, t_msh *g_msh);
 

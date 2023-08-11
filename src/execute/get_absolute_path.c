@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_absolute_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:03:28 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:03:28 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:52:44 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	add_slash(char ***path_env_split)
 	}
 }
 
-char	*get_correct_path(char *program_name, char **path_env_split, t_msh *g_msh)
+char	*get_correct_path(char *program_name, char **path_env_split, \
+t_msh *g_msh)
 {
 	char		*absolute_path;
 	int			i;
@@ -96,7 +97,8 @@ char	*get_correct_path(char *program_name, char **path_env_split, t_msh *g_msh)
 	return (absolute_path);
 }
 
-/* char	*get_correct_path(char *program_name, char **path_env_split, t_msh *g_msh)
+/* char	*get_correct_path(char *program_name, char **path_env_split, \
+ *g_msh)
 {
 	char		*absolute_path;
 	int			i;

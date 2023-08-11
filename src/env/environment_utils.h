@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment_utils.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 14:59:16 by gleal             #+#    #+#             */
-/*   Updated: 2023/08/03 17:11:03 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 10:00:30 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:12:18 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 int		is_env_var(char *potential_var, t_list *env);
 char	*get_var_name(char *str, t_msh *g_msh);
 int		ft_strnstr_iterator(char *haystack, char *needle, size_t len);
-char	*replace_midstring(char *original,
-			char *old_substr,
-			char *new_substr,
-			int replace_i, t_msh *g_msh);
+char	*replace_midstring(char *original, char *old_substr, char *new_substr, \
+int replace_i, t_msh *g_msh);
 void	tilde_join(char **str, char **home_path, t_msh *g_msh);
 
 /*

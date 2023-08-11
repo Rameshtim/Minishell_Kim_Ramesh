@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:11:48 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:11:49 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:58:07 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	has_char_at_end(const char *input, char c, char *err_message, t_msh *g_msh)
 	return (check);
 }
 
-int	has_forbidden_sequence(const char *input, char *test, char *err_message, t_msh *g_msh)
+int	has_forbidden_sequence(const char *input, char *test, char *err_message, \
+t_msh *g_msh)
 {
 	int		check;
 	char	*trimmed;

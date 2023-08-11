@@ -28,8 +28,8 @@ int	update_directories(char *old_dir, t_list **env, t_msh *g_msh)
 	return (EXIT_SUCCESS);
 }
 
-
-char	*replace_env_value(char **env_ptr, char	*var_name, char *new_value, t_msh *g_msh)
+char	*replace_env_value(char **env_ptr, char	*var_name, char *new_value, \
+							t_msh *g_msh)
 {
 	char	*temp;
 	char	*final;
@@ -47,7 +47,8 @@ char	*replace_env_value(char **env_ptr, char	*var_name, char *new_value, t_msh *
 	return (final);
 }
 
-void	update_environment_var(char *var, char *new_value, t_list *env, t_msh *g_msh)
+void	update_environment_var(char *var, char *new_value, t_list *env, \
+								t_msh *g_msh)
 {
 	int		i;
 	char	*cur_env;

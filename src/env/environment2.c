@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   environment2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:57:03 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:57:04 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:21:21 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "environment.h"
-
 
 char	*ft_getenv(char *key, t_msh *g_msh)
 {
@@ -131,8 +130,8 @@ void	replace_status_env(char **str, int last_status, t_msh *g_msh)
 		status_string = ft_itoa(last_status);
 		if (status_string == 0)
 			return (quit_program(EXIT_FAILURE, g_msh));
-		final = replace_midstring(*str, "$?", status_string, replace_spot, g_msh);
-		printf("final : %s\n", final);
+		final = replace_midstring(*str, "$?", status_string, \
+		replace_spot, g_msh);
 		free(status_string);
 		status_string = 0;
 		free(*str);

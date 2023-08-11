@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termcaps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:12:21 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:12:22 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:59:09 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	init_termcaps(t_termcaps *termcaps, t_msh *g_msh)
 
 	if (tcgetattr(STDIN_FILENO, &termcaps->old_term) == -1)
 		quit_program(EXIT_FAILURE, g_msh);
-	//when we change the canonical mode capture the state of stdin and put it to old_term
+	//when we change the canonical mode capture the state of stdin 
+	//and put it to old_term
 	//so we can manipulate hou std_in works.
 	term_type = ft_getenv("TERM", g_msh);
 	//get whatever is after TERM in env.

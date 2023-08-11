@@ -29,7 +29,6 @@ typedef struct d_list
 	struct d_list	*prev;
 }	t_dlist;
 
-
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);

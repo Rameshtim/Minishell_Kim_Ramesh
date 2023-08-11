@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 08:59:26 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 16:01:04 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 09:59:42 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 09:59:44 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@
 # include "main.h"
 
 int	ft_exit(t_list *args, t_msh *g_msh);
-
 
 #endif

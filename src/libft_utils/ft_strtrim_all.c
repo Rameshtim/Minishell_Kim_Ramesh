@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim_all.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:12:24 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/08/08 13:44:25 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:03:59 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	concat_all(char *dest, char **strs)
 	}
 }
 
-static size_t get_lenth(char **strs)
+static size_t	get_lenth(char **strs)
 {
 	size_t	len;
 

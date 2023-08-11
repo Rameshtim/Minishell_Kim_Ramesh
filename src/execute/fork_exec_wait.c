@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fork_exec_wait.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:03:10 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:03:10 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:44:01 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fork_exec_wait.h"
 
-void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, t_msh *g_msh)
+void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, \
+t_msh *g_msh)
 {
 	char	*exec_path;
 
@@ -42,7 +43,8 @@ void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, t_msh *g_m
 }
 
 /* 
-void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, t_msh *g_msh)
+void	exec_child(char **tokens, char **envp, int nb_cmds, int **pipes, \
+ *g_msh)
 {
 	char	*exec_path;
 

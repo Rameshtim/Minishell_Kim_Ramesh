@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear_if.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:28:05 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/08/06 17:36:56 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:03:25 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_utils.h"
 
-void ft_lstclear_if(t_list **lst, int (*cmp)(void *), void (*del)(void *))
+void	ft_lstclear_if(t_list **lst, int (*cmp)(void *), void (*del)(void *))
 {
 	if (!lst)
 		return ;

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   write_err_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:18:33 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:18:33 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:05:27 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "write_err_message.h"
-
 
 void	write_msh_error(char *err_message)
 {

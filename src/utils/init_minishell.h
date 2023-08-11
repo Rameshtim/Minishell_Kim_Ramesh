@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minishell.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 12:17:29 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 17:45:33 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:46 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:01:47 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

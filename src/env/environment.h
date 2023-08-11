@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 14:59:16 by gleal             #+#    #+#             */
-/*   Updated: 2023/08/03 17:12:39 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 10:00:38 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:13:06 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_last_exec_name(char *env_var, t_msh *g_msh);
 char	*ft_getenv(char *key, t_msh *g_msh);
 void	duplicate_env(t_list **dup_envp, char **envp, t_msh *g_msh);
 void	remove_env_value(char	*key, t_msh *g_msh);
-void	replace_status_env(char **str, int	last_status, t_msh *g_msh);
+void	replace_status_env(char **str, int last_status, t_msh *g_msh);
 int		is_path_executable(char *exec_file);
 
 /*

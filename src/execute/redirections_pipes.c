@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_pipes.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:09:38 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 11:09:41 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:49:06 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	set_redirs_pipes(t_list *redirs,
 	nb_cmds = cmd_table->nb_cmds;
 	if (open_all_files(redirs, g_msh) == EXIT_FAILURE)
 		return ;
-	if (!has_redirs(redirs, "<") && (!has_redirs(redirs, "<<")
-		&& process_index != 0))
+	if (!has_redirs(redirs, "<") && (!has_redirs(redirs, "<<") \
+	&& process_index != 0))
 		dup2(pipes[process_index - 1][0], STDIN_FILENO);
 	if (!has_redirs(redirs, ">") && !has_redirs(redirs, ">>")
 		&& process_index != nb_cmds - 1)
@@ -79,7 +79,7 @@ int	open_all_files(t_list *redirs, t_msh *g_msh)
 	int		fd_i;
 	int		fd_o;
 	t_redir	*redir;
-	
+
 	fd_i = -2;
 	fd_o = -2;
 	while (redirs)
@@ -93,9 +93,11 @@ int	open_all_files(t_list *redirs, t_msh *g_msh)
 			fd_i = open_heredoc_file(redir, fd_i, O_RDONLY | O_CREAT, 0, g_msh);
 		}
 		else if (!ft_strcmp(redir->type, ">"))
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666, g_msh);
+			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, \
+			0666, g_msh);
 		else if (!ft_strcmp(redir->type, ">>"))
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666, g_msh);
+			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, \
+			0666, g_msh);
 		if (fd_i == -1 || fd_o == -1)
 			return (EXIT_FAILURE);
 		redirs = redirs->next;
@@ -103,7 +105,39 @@ int	open_all_files(t_list *redirs, t_msh *g_msh)
 	return (EXIT_SUCCESS);
 }
 
-int	open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, t_msh *g_msh)
+/* int	open_all_files(t_list *redirs, t_msh *g_msh)
+{
+	int		fd_i;
+	int		fd_o;
+	t_redir	*redir;
+
+	fd_i = -2;
+	fd_o = -2;
+	while (redirs)
+	{
+		redir = (t_redir *)redirs->data;
+		if (!ft_strcmp(redir->type, "<"))
+			fd_i = open_file(redir, fd_i, O_RDONLY, 0, g_msh);
+		else if (!ft_strcmp(redir->type, "<<"))
+		{
+			read_heredoc_file(redir, g_msh);
+			fd_i = open_heredoc_file(redir, fd_i, O_RDONLY | O_CREAT, 0, g_msh);
+		}
+		else if (!ft_strcmp(redir->type, ">"))
+			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, \
+			0666, g_msh);
+		else if (!ft_strcmp(redir->type, ">>"))
+			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, \
+			0666, g_msh);
+		if (fd_i == -1 || fd_o == -1)
+			return (EXIT_FAILURE);
+		redirs = redirs->next;
+	}
+	return (EXIT_SUCCESS);
+} */
+
+int	open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, \
+t_msh *g_msh)
 {
 	char	*file_name;
 	int		new_fd;

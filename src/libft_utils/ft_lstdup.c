@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:19:36 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/08/06 17:43:09 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:00:43 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstdup(t_list *lst)
 {
 	t_list	*new_lst;
 	t_list	*tmp;
-	
+
 	new_lst = 0;
 	while (lst)
 	{

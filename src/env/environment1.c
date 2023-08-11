@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:56:29 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:56:31 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:29:46 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,25 @@ char	*get_last_exec_name(char *underscore, t_msh *g_msh)
 	char	*value;
 	char	*temp;
 
+	value = ft_getenv(underscore, g_msh);
+	if (is_path_executable(value))
+	{
+		temp = ft_strdup(ft_strrchr(value, '/') + 1);
+		if (temp == 0)
+			quit_program(EXIT_FAILURE, g_msh);
+		free(value);
+		value = temp;
+		return (value);
+	}
+	else
+		return (value);
+}
+
+/* char	*get_last_exec_name(char *underscore, t_msh *g_msh)
+{
+	char	*value;
+	char	*temp;
+
 	//maybe not needed
 	value = ft_getenv(underscore, g_msh);
 	//if yes, print out end of '/ + 000000000 '
@@ -199,4 +218,4 @@ char	*get_last_exec_name(char *underscore, t_msh *g_msh)
 	}
 	else //else print out all path
 		return (value);
-}
+} */

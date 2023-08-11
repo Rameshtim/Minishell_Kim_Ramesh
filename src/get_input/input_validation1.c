@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:10:44 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:10:45 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:55:51 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	is_input_valid(const char *input, t_msh *g_msh)
 	return (check);
 } */
 
-int	is_input_valid_unexpected_token(const char *input, char *err_message, t_msh *g_msh)
+int	is_input_valid_unexpected_token(const char *input, char *err_message, \
+t_msh *g_msh)
 {
 	int		check;
 
@@ -118,7 +119,8 @@ int	has_quotes_open(const char *input, char *err_message)
 	return (check);
 }
 
-int	has_char_at_beginning(const char *input, char c, char *err_message, t_msh *g_msh)
+int	has_char_at_beginning(const char *input, char c, char *err_message, \
+t_msh *g_msh)
 {
 	int		check;
 	char	*cpy;

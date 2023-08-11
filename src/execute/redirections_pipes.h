@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_pipes.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:04:57 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 17:13:59 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:05 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:44:40 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	set_redirs_pipes(t_list *redirs,
 			int process_index, t_msh *g_msh);
 int		has_redirs(t_list *redirs, char *type);
 int		open_all_files(t_list *redirs, t_msh *g_msh);
-int		open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, t_msh *g_msh);
+int		open_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, \
+t_msh *g_msh);
 
 #endif

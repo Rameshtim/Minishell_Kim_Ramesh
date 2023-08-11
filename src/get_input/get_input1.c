@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_input1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:07:16 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:07:17 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:58:51 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_input.h"
-
 
 char	*get_input(t_dlist *input_history, t_termcaps *termcaps, t_msh *g_msh)
 {

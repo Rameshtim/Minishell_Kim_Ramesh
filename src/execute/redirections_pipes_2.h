@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirections_pipes.h                               :+:      :+:    :+:   */
+/*   redirections_pipes_2.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:04:57 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/05/18 09:44:07 by dda-silv         ###   ########.fr       */
+/*   Created: 2023/08/11 10:01:02 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:51:34 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "main.h"
 
-int	open_heredoc_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, t_msh *g_msh);
-void read_heredoc_file(t_redir *redir, t_msh *g_msh);
+int		open_heredoc_file(t_redir *redir, int prev_fd, int flags, \
+mode_t permissions, t_msh *g_msh);
+void	read_heredoc_file(t_redir *redir, t_msh *g_msh);
 
 #endif

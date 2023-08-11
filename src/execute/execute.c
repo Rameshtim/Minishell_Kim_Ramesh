@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:01:21 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 10:01:22 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:54:36 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	exec_ast(t_ast *ast, t_msh *g_msh)
 
 	cmd_table = ast->cmd_tables;
 	while (cmd_table)
-	{	
+	{
 		g_msh->curr_cmd_table = cmd_table->data;
 		exec_cmd_table(g_msh->curr_cmd_table, g_msh);
 		save_last_token(g_msh->curr_cmd_table, g_msh);
@@ -55,7 +55,8 @@ void	exec_cmd_table(t_cmd_table *cmd_table, t_msh *g_msh)
 		g_msh->exit_status = cmd_table->return_value;
 }
 
-void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_msh)
+void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, \
+t_msh *g_msh)
 {
 	int	saved_stdin;
 	int	saved_stdout;
@@ -69,7 +70,8 @@ void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_ms
 	if (g_msh->exit_status == EXIT_SUCCESS && cmd->tokens != 0)
 	{
 		if (is_builtin(cmd->tokens))
-			exec_builtin(cmd->tokens, &g_msh->dup_envp, nb_cmds, process_index, g_msh);
+			exec_builtin(cmd->tokens, &g_msh->dup_envp, nb_cmds, process_index, \
+			g_msh);
 		else
 			exec_program(cmd->tokens, cmd_table, g_msh);
 	}
@@ -79,7 +81,8 @@ void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_ms
 	close(saved_stdout);
 }
 
-/* void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_msh)
+/* void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, \
+ *g_msh)
 {
 	"      env      "
 	int	saved_stdin;
@@ -94,7 +97,8 @@ void	exec_cmd(t_cmd *cmd, t_cmd_table *cmd_table, int process_index, t_msh *g_ms
 	if (g_msh->exit_status == EXIT_SUCCESS && cmd->tokens != 0)
 	{
 		if (is_builtin(cmd->tokens))
-			exec_builtin(cmd->tokens, &g_msh->dup_envp, nb_cmds, process_index, g_msh);
+			exec_builtin(cmd->tokens, &g_msh->dup_envp, nb_cmds, process_index, \
+			g_msh);
 		else
 			exec_program(cmd->tokens, cmd_table, g_msh);
 	}

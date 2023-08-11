@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:54:19 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:54:20 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:08:53 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	ft_unset(t_list *tokens, t_list **env, t_msh *g_msh)
 		if (!has_valid_identifier_unset(token_str))
 			return (EXIT_FAILURE);
 		if (has_only_one_cmd(g_msh))
-		{	
 			if (is_env_var(token_str, *env))
 				delete_env_var(token_str, env);
-		}
 		tokens = tokens->next;
 	}
 	return (EXIT_SUCCESS);

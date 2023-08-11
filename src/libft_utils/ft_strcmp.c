@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:16:51 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/08/06 17:51:22 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:01:23 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	ft_strcmp(char *s1, char *s2)
 		str++;
 		src++;
 	}
-	return (*str - *src);	
+	return (*str - *src);
 }

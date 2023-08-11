@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment_utils2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:56:07 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 09:56:08 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:20:24 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void	increment_shlvl(t_msh *g_msh)
 	else
 	{
 		//if we already have SHLVL in our environment
-		//we call the ft_getenv function check the string SHLVL and at the end we search for '='
+		//we call the ft_getenv function check the string SHLVL and 
+		//at the end we search for '='
 		//and get whatever is at the end like (SHLVL=1) we get 1 as string.
 		cur_lvl = ft_getenv("SHLVL", g_msh);
 		//make that to int.

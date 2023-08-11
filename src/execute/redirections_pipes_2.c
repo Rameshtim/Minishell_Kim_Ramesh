@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_pipes_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:11:36 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 11:11:37 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:42:06 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "redirections_pipes_2.h"
 
-int	open_heredoc_file(t_redir *redir, int prev_fd, int flags, mode_t permissions, t_msh *g_msh)
+int	open_heredoc_file(t_redir *redir, int prev_fd, int flags, \
+mode_t permissions, t_msh *g_msh)
 {
 	char	*file_name;
 	int		new_fd;
@@ -35,30 +36,30 @@ int	open_heredoc_file(t_redir *redir, int prev_fd, int flags, mode_t permissions
 	return (new_fd);
 }
 
-void read_heredoc_file(t_redir *redir, t_msh *g_msh)
+void	read_heredoc_file(t_redir *redir, t_msh *g_msh)
 {
-    char *whole_str;
-    char *str;
-    char *tmp;
-    char *name;
+	char	*whole_str;
+	char	*str;
+	char	*tmp;
+	char	*name;
 
 	whole_str = ft_strdup("");
 	name = (char *)redir->direction;
-    while (1) 
+	while (1) 
 	{
-        str = readline("heredoc>");
-        if (!str)
-            break;
-        if (!ft_strcmp(str, (char *)name)) 
+		str = readline("heredoc>");
+		if (!str)
+			break ;
+		if (!ft_strcmp(str, (char *)name)) 
 		{
-            free(str);
-            break;
-        }
-        replace_vars_with_values(&str, g_msh);
-        tmp = ft_strjoin(whole_str, str);
-        free(str);
-        whole_str = ft_strjoin(tmp, "\n");
-        free(tmp);
-    }
-    printf("%s", whole_str);
+			free(str);
+			break ;
+		}
+		replace_vars_with_values(&str, g_msh);
+		tmp = ft_strjoin(whole_str, str);
+		free(str);
+		whole_str = ft_strjoin(tmp, "\n");
+		free(tmp);
+	}
+	printf("%s", whole_str);
 }

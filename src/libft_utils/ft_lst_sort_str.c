@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_sort_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:19:12 by rtimsina          #+#    #+#             */
-/*   Updated: 2023/08/06 17:36:52 by rtimsina         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:04:58 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	split_list(t_list *head, t_list **first_half, t_list **last_half)
 static t_list	*merge_sort(t_list *a, t_list *b, int (*op)(char *, char *))
 {
 	t_list	*result;
-	
+
 	result = NULL;
 	if (a == NULL)
 		return (b);

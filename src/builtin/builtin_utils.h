@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 09:11:21 by dda-silv          #+#    #+#             */
-/*   Updated: 2023/08/03 17:26:17 by rtimsina         ###   ########.fr       */
+/*   Created: 2023/08/11 09:58:18 by hongbaki          #+#    #+#             */
+/*   Updated: 2023/08/11 10:04:55 by hongbaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 */
 
 int		update_directories(char *old_dir, t_list **env, t_msh *g_msh);
-void	update_environment_var(char *var, char *new_value, t_list *env, t_msh *g_msh);
-char	*replace_env_value(char **env_ptr, char	*var_name, char *new_value, t_msh *g_msh);
+void	update_environment_var(char *var, char *new_value, t_list *env, \
+t_msh *g_msh);
+char	*replace_env_value(char **env_ptr, char	*var_name, char *new_value, \
+t_msh *g_msh);
 
 int		has_valid_identifier_export(char *token_str);
 int		is_token_valid_export(char *token_str, char *err_message);

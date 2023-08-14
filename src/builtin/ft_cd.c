@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:50:54 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 14:58:13 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:14:22 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	execute_cd(t_list *tokens, t_list **env, char *pwd, t_msh *g_msh)
 	int		status;
 
 	if (tokens == 0)
+	{
 		status = change_dir_home(pwd, env, g_msh);
+		//free(pwd);
+	}
 	else if (tokens->next != 0)
 		status = cd_error_messsage("cd", "too many arguments");
 	else
@@ -92,8 +95,10 @@ int	change_dir_home(char *cur_pwd, t_list **env, t_msh *g_msh)
 			status = update_directories(cur_pwd, env, g_msh);
 		else
 			status = other_invalid_error("cd", errno, home);
-		home = EXIT_SUCCESS;
+		//home = EXIT_SUCCESS;
 	}
+	free(home);
+	//free(cur_pwd);
 	return (status);
 }
 

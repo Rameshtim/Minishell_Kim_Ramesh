@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:56:29 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 16:04:45 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:51:54 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ void	replace_env_single_token(char **token, t_msh *g_msh)
 	}
 	free(*token);
 	*token = join_split_token(split_token, g_msh);
-	/* free(split_token);
-	free(token_piece); */
+	//changed this
+	ft_lstclear(&split_token, free);
+	//free(split_token);
+	//free(token_piece);
 }
 
 /* void	replace_env_single_token(char **token, t_msh *g_msh)
@@ -164,6 +166,8 @@ void	replace_tilde_with_home(char **token, t_msh *g_msh)
 	}
 	else
 		tilde_join(token, &home_path, g_msh);
+	//free(*token);
+	//free_arr((void **)token);
 }
 
 /* void	replace_tilde_with_home(char **token, t_msh *g_msh)

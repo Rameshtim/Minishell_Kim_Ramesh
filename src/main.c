@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:14:15 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/08 11:14:16 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:11:24 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int	main(int argc, char **argv, char **envp)
 		free_ast(g_msh->ast);
 		g_msh->ast = 0;
 	}
+	free_msh(g_msh);
 	return (0);
 }

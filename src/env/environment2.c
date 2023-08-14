@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongbaki <hongbaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtimsina <rtimsina@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:57:03 by hongbaki          #+#    #+#             */
-/*   Updated: 2023/08/11 14:58:50 by hongbaki         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:03:48 by rtimsina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ void	replace_status_env(char **str, int last_status, t_msh *g_msh)
 		status_string = 0;
 		free(*str);
 		*str = final;
+		//removed this
+		//free(final);
 		replace_spot = ft_strnstr_iterator(*str, "$?", ft_strlen(*str));
 	}
 }
